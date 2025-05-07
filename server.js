@@ -164,7 +164,10 @@ app.get('/api/reviews/:restoranIme', async (req, res) => {
 /* ------------------------------------------------------------------ *
  * 8.  TEST RUTA & START
  * ------------------------------------------------------------------ */
-app.get('/', (_req, res) => res.send('API radi.'));
+app.get("/", (req, res) => {
+  res.json({ message: "API radi." });
+});
+
 
 app.listen(PORT, () =>
   console.log(`🚀 Server sluša na http://localhost:${PORT}`)
