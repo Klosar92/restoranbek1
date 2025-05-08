@@ -169,7 +169,9 @@ app.get('/api/reviews/:restoranIme', async (req, res) => {
 });
 
 
-
+app.get('/healthz', (_req, res) => {
+  res.send('OK');
+});
 
 app.listen(PORT, () =>
   console.log(`🚀 Server sluša na http://localhost:${PORT}`)
