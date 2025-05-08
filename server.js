@@ -23,7 +23,9 @@ const compression = require('compression');
 console.log('SERVER vidi URI:', process.env.MONGO_URI);
 
 // Pokušaj prvo sa process.env.MONGO_URI, ako je undefined – uzmi FALLBACK_URI
-const mongoURI = process.env.MONGO_URI || FALLBACK_URI;
+const mongoURI = process.env.MONGO_URI
+                || process.env.MONGODB_URI
+                || FALLBACK_URI;
 
 mongoose
   .connect(mongoURI)
