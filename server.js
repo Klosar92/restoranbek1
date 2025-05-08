@@ -164,8 +164,13 @@ app.get('/api/reviews/:restoranIme', async (req, res) => {
 /* ------------------------------------------------------------------ *
  * 8.  TEST RUTA & START
  * ------------------------------------------------------------------ */
-app.get("/", (req, res) => {
-  res.json({ message: "API radi." });
+app.get("/", async (req, res) => {
+  try {
+    const restorani = await Restoran.find();
+    res.json(restorani);
+  } catch (err) {
+    res.status(500).json({ error: "Greška prilikom dohvaćanja restorana" });
+  }
 });
 
 
