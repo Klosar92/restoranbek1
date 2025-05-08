@@ -8,6 +8,8 @@
 
 // VARIJANTA A – koristi .env fajl (preporučeno za produkciju)
 require('dotenv').config();  // .env mora biti u istom folderu
+const MONGODB_URI = process.env.MONGODB_URI;
+
 
 // Ako .env NE postoji ili zaboraviš MONGO_URI, fallback na varijantu B:
 const FALLBACK_URI =
@@ -28,7 +30,10 @@ const mongoURI = process.env.MONGO_URI
                 || FALLBACK_URI;
 
 mongoose
-  .connect(mongoURI)
+  .connect(mongoURI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+  })
   .then(() =>
     console.log('✅ Povezan na bazu:', mongoose.connection.name)
   )
